@@ -1,0 +1,42 @@
+<!-- <nav mat-tab-nav-bar>
+  <a mat-tab-link
+     routerLink="../dashboard"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="">
+    Home
+  </a>
+  <a mat-tab-link
+     routerLink="../buy-entries"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+    Buy Entries List
+  </a>
+  <a mat-tab-link
+     routerLink="../add-buy-entry"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="">
+    Add Buy Entry
+  </a>
+  <a mat-tab-link
+     routerLink="../edit-buy-entry"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="">
+    Edit Buy Entry
+  </a>
+  
+</nav> -->
+
+<mat-tab-group>
+  <mat-tab label="Home">
+    <ng-template mat-tab-label>
+        <mat-icon routerLink='../dashboard'>home</mat-icon>
+      </ng-template>
+  </mat-tab>
+  <mat-tab label="Buy Entries" isActive=true>
+    <app-buy-entries></app-buy-entries>
+  </mat-tab>
+  <mat-tab label="Add Buy Entry">
+    <app-add-buy-entry></app-add-buy-entry>
+  </mat-tab>
+  <mat-tab label="Edit Buy Entry">Content 2</mat-tab>
+</mat-tab-group>

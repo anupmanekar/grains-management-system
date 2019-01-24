@@ -1,0 +1,96 @@
+<div class="margin:auto col-md-11 col-md-offset-3">
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+  
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="entryDate">
+      <mat-header-cell *matHeaderCellDef> Entry Date </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.entryDate | date: 'dd/MM/yyyy'}} </mat-cell>
+    </ng-container>
+
+    <!-- Seller Name Column -->
+    <ng-container matColumnDef="sellerName">
+      <mat-header-cell *matHeaderCellDef> Seller Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.sellerName}} </mat-cell>
+    </ng-container>
+
+    <!-- Town Name Column -->
+    <ng-container matColumnDef="town">
+      <mat-header-cell *matHeaderCellDef> Town </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.town}} </mat-cell>
+    </ng-container>
+    
+    <!-- Grain Type Column -->
+    <ng-container matColumnDef="grainType">
+      <mat-header-cell *matHeaderCellDef> Grain Type </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.grainType.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Total Amount Column -->
+    <ng-container matColumnDef="totalAmount">
+      <mat-header-cell *matHeaderCellDef> Total Amount </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.totalAmount}} </mat-cell>
+    </ng-container>
+
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="ratePerKg">
+      <mat-header-cell *matHeaderCellDef> Rate Per Kg </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ratePerKg}} </mat-cell>
+    </ng-container>
+
+    <!-- Labour Charge Column -->
+    <ng-container matColumnDef="labourCharge">
+      <mat-header-cell *matHeaderCellDef> Labour Charge </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.labourCharge}} </mat-cell>
+    </ng-container>
+
+    <!-- Transaction Reference -->
+    <ng-container matColumnDef="transactionRef">
+      <mat-header-cell *matHeaderCellDef> Transaction Reference </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.transactionReference}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actionsColumn">
+        <mat-header-cell *matHeaderCellDef>
+          <button mat-icon-button color="accent" (click)="dataSource.createNew()"><i class="fa fa-plus mat-icon"></i></button>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <button *ngIf="!row.editing" mat-icon-button color="primary" focusable="false" (click)="row.startEdit()">
+                <i class="fa fa-pencil mat-icon"></i>
+              </button>
+          <button *ngIf="row.editing" mat-icon-button color="primary" focusable="false" (click)="row.confirmEditCreate()">
+                <i class="fa fa-check mat-icon"></i>
+              </button>
+          <button mat-icon-button color="primary" focusable="false" (click)="row.cancelOrDelete()">
+                <i class="fa fa-times mat-icon"></i>
+              </button>
+        </mat-cell>
+      </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator #paginator
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 20]"
+  [showFirstLastButtons]="true"></mat-paginator>
+</div>

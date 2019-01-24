@@ -1,0 +1,51 @@
+<div class="buy-entry-form-container">
+    <form class="buy-entry-form" (ngSubmit)="onSubmit()" #buyEntryForm="ngForm">
+      <mat-form-field>
+        <input required matInput [matDatepicker]="picker" id="entryDate" name="entryDate" placeholder="Entry date" [(ngModel)]="model.entryDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+  
+      <mat-form-field>
+          <input required matInput placeholder="Seller Name" id="sellerName" name="sellerName" [(ngModel)]="model.sellerName">
+      </mat-form-field>
+  
+    <mat-form-field>
+      <mat-select placeholder="Town" id="town" name="town" [(ngModel)]="model.town">
+        <mat-option value="Ratlam">Ratlam</mat-option>
+        <mat-option value="Indore">Indore</mat-option>
+        <mat-option value="Bhopal">Bhopal</mat-option>
+        <mat-option value="Sagar">Sagar</mat-option>
+        <mat-option value="Jalore">Jalore</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select placeholder="Grain" id="grainTypeId" name="grainTypeId" [(ngModel)]="model.grainTypeId">
+          <mat-option value=1>Gehu</mat-option>
+          <mat-option value=2>Bajra</mat-option>
+          <mat-option value=3>Chana</mat-option>
+          <mat-option value=4>Chaval</mat-option>
+          <mat-option value=5>Makka</mat-option>
+        </mat-select>
+      </mat-form-field>
+    <mat-form-field>
+        <input type="number" required matInput placeholder="Weight" name="weight" id="weight" [(ngModel)]="model.weight">
+    </mat-form-field>
+    <mat-form-field>
+        <input type="number" required matInput placeholder="Rate Per Kg" name="ratePerKg" id="ratePerKg" [(ngModel)]="model.ratePerKg">
+    </mat-form-field>
+    <mat-form-field>
+        <input type="number" matInput placeholder="Labour Charges" name="labourCharges" id="labourCharges" [(ngModel)]="model.labourCharges">
+    </mat-form-field>
+    <mat-form-field>
+        <input type="number" required matInput placeholder="Total Amount" name="totalAmount" id="totalAmount" [(ngModel)]="model.totalAmount">
+    </mat-form-field>
+    <mat-form-field>
+        <input required matInput placeholder="Payment Reference" name="transactionReference" id="transactionReference" [(ngModel)]="model.transactionReference">
+    </mat-form-field>
+    <div>
+    <button type="submit" mat-raised-button color="primary">Save</button>
+    <button mat-raised-button color="warn">Cancel</button>
+  </div>
+  </form>
+  </div>  

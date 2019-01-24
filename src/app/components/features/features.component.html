@@ -1,0 +1,7 @@
+<h2>Features</h2>
+
+<ul class="features">
+  <li *ngFor="let feature of features" (click)="onSelect(feature)"  [class.selected]="feature === selectedFeature">
+    <span class="badge">{{feature.name}}  </span> 
+  </li>
+</ul>
